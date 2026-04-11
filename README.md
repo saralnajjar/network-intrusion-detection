@@ -1,2 +1,2 @@
-# network-intrusion-detection
+# Network Intrusion Detection
 A Python-based network intrusion detection system (NIDS) built incrementally, starting from rule-based detection and evolving toward ML-powered classification.
