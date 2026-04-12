@@ -1,6 +1,23 @@
 # Network Intrusion Detection
 A Python-based network intrusion detection system (NIDS) built incrementally, starting from rule-based detection and evolving toward ML-powered classification.
 
+## Project Structure
+ 
+```
+network-intrusion-detection/
+├── data/
+├── src/
+│   ├── detector.py
+│   ├── parser.py
+│   ├── features.py
+│   ├── model.py
+│   └── cli.py
+├── tests/
+├── notebooks/
+└── README.md
+```
+ 
+---
 ## Roadmap
 ### Part 1: Rule Based Detection
 > Working detector using rules before moving to the ML
