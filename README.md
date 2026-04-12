@@ -11,3 +11,13 @@ A Python-based network intrusion detection system (NIDS) built incrementally, st
 - Add thresholds config (config.json)
 - Unit tests for rule engine
 
+## Attack Categories (NSL-KDD)
+ 
+| Category | Description | Examples |
+|----------|-------------|---------|
+| DoS | Denial of Service — overwhelm the target | SYN flood, Ping of Death |
+| Probe | Surveillance / port scanning | nmap, ipsweep |
+| R2L | Remote to Local — unauthorised access | FTP brute force, phf |
+| U2R | User to Root — privilege escalation | buffer overflow, rootkit |
+ 
+---
