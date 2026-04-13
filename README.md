@@ -28,6 +28,16 @@ network-intrusion-detection/
 - Add thresholds config (config.json)
 - Unit tests for rule engine
 
+
+## Dataset
+ 
+This project uses the **NSL-KDD** dataset, a cleaned version of the KDD Cup 1999 dataset, widely used for NIDS research.
+ 
+- Download: https://www.unb.ca/cic/datasets/nsl.html
+    - Place files in `data/raw/`
+ 
+---
+
 ## Attack Categories (NSL-KDD)
  
 | Category | Description | Examples |
