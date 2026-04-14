@@ -35,6 +35,16 @@ network-intrusion-detection/
 - Normalise continuous features
 - Train/test split + save processed data
 
+### Part 3: ML Classification
+> Train models to classify traffic as normal or attack.
+ 
+- Baseline: Logistic Regression classifier
+- Decision Tree with feature importance plot
+- Random Forest: compare accuracy vs. Decision Tree
+- Evaluation: precision, recall, F1 per attack category
+- Confusion matrix visualisation
+- Save/load trained model (`joblib`)
+
 
 ## Getting Started
  
