@@ -5,16 +5,16 @@ A Python-based network intrusion detection system (NIDS) built incrementally, st
  
 ```
 network-intrusion-detection/
-├── data/
-├── src/
-│   ├── detector.py
-│   ├── parser.py
-│   ├── features.py
-│   ├── model.py
-│   └── cli.py
-├── tests/
-├── notebooks/
-└── README.md
+    data/
+    src/
+        detector.py
+        parser.py
+        features.py
+        model.py
+        cli.py
+    tests/
+    notebooks/
+    README.md
 ```
  
 ---
@@ -28,6 +28,32 @@ network-intrusion-detection/
 - Add thresholds config (config.json)
 - Unit tests for rule engine
 
+## Part 2:Dataset + EDA
+- Load and clean the NSL-KDD dataset
+- Exploratory data analysis notebook: class distribution, feature correlation
+- Encode categorical features (protocol, service, flag)
+- Normalise continuous features
+- Train/test split + save processed data
+
+
+## Getting Started
+ 
+```bash
+git clone https://github.com/saralnajjar/network-intrusion-detection
+cd network-intrusion-detection
+pip install -r requirements.txt
+```
+ 
+Run rule-based detection on a log file (Phase 1):
+```bash
+python src/cli.py --input data/sample.csv --mode rules
+```
+ 
+Run ML detection (Phase 3+):
+```bash
+python src/cli.py --input data/sample.csv --mode model --model models/random_forest.pkl
+```
+ 
 
 ## Dataset
  
