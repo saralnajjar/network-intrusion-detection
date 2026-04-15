@@ -64,7 +64,6 @@ Run ML detection (Phase 3+):
 python src/cli.py --input data/sample.csv --mode model --model models/random_forest.pkl
 ```
  
-
 ## Dataset
  
 This project uses the **NSL-KDD** dataset, a cleaned version of the KDD Cup 1999 dataset, widely used for NIDS research.
@@ -84,3 +83,12 @@ This project uses the **NSL-KDD** dataset, a cleaned version of the KDD Cup 1999
 | U2R | User to Root — privilege escalation | buffer overflow, rootkit |
  
 ---
+
+## Tech Stack
+
+- **Python 3.11+**
+- `pandas`, `numpy` — data processing
+- `scikit-learn` — ML models
+- `torch` — autoencoder (Phase 5)
+- `matplotlib`, `seaborn` — visualisation
+- `pytest` — testing
