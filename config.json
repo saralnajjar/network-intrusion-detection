@@ -1,0 +1,15 @@
+{
+  "port_scan": {
+    "min_services": 10,
+    "window": 100
+  },
+  "syn_flood": {
+    "min_connections": 50,
+    "max_duration": 2,
+    "window": 100
+  },
+  "brute_force": {
+    "min_failed_logins": 5,
+    "window": 100
+  }
+}
