@@ -1,15 +1,15 @@
 {
   "port_scan": {
-    "min_services": 10,
-    "window": 100
+    "min_srv_count": 20,
+    "max_same_srv_rate": 0.1
   },
   "syn_flood": {
-    "min_connections": 50,
-    "max_duration": 2,
-    "window": 100
+    "min_count": 100,
+    "min_serror_rate": 0.5,
+    "max_duration": 0
   },
   "brute_force": {
-    "min_failed_logins": 5,
-    "window": 100
+    "min_failed_logins": 1,
+    "not_logged_in": true
   }
 }
