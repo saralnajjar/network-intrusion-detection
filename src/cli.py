@@ -1,5 +1,5 @@
 """
-cli.py: Command-line interface for the network intrusion detection system.
+cli.py — Command-line interface for the network intrusion detection system.
  
 Usage:
     python -m src.cli --input data/raw/KDDTrain+.csv
@@ -7,6 +7,7 @@ Usage:
     python -m src.cli --input data/raw/KDDTrain+.csv --rule syn_flood
     python -m src.cli --input data/raw/KDDTrain+.csv --quiet
 """
+ 
 import argparse
 import sys
 from pathlib import Path
@@ -78,7 +79,7 @@ def run(args: argparse.Namespace) -> int:
  
     if not args.quiet:
         for a in alerts:
-            print(f"  [{a['rule'].upper()}] src={a['src']} — {a['detail']}")
+            print(f"  [{a['rule'].upper()}] service={a['service']} protocol={a['protocol']} — {a['detail']}")
  
     return 0
  
