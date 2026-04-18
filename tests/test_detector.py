@@ -67,3 +67,52 @@ def brute_force_record(service="ftp", num_failed_logins=3, logged_in=0) -> dict:
         num_failed_logins=num_failed_logins,
         logged_in=logged_in,
     )
+
+# SYN Flood
+
+class TestSynFlood:
+    def test_detects_syn_flood(self):
+        records = [syn_flood_record()]
+        alerts = _detect_syn_flood(records, DEFAULT_CONFIG)
+        assert len(alerts) == 1
+        assert alerts[0]["rule"] == "syn_flood"
+
+    def test_no_alert_below_count_threshold(self):
+        records = [syn_flood_record(count=50)]  # threshold is 100
+        alerts = _detect_syn_flood(records, DEFAULT_CONFIG)
+        assert len(alerts) == 0
+
+    def test_no_alert_below_serror_threshold(self):
+        records = [syn_flood_record(serror_rate=0.1)]  # threshold is 0.5
+        alerts = _detect_syn_flood(records, DEFAULT_CONFIG)
+        assert len(alerts) == 0
+
+    def test_no_alert_nonzero_duration(self):
+        record = syn_flood_record()
+        record["duration"] = 5
+        alerts = _detect_syn_flood([record], DEFAULT_CONFIG)
+        assert len(alerts) == 0
+
+    def test_no_alert_udp_protocol(self):
+        record = syn_flood_record()
+        record["protocol_type"] = "udp"
+        alerts = _detect_syn_flood([record], DEFAULT_CONFIG)
+        assert len(alerts) == 0
+    
+    def test_multiple_floods_detected(self):
+        records = [syn_flood_record(service=s) for s in ["http", "ftp", "ssh"]]
+        alerts = _detect_syn_flood(records, DEFAULT_CONFIG)
+        assert len(alerts) == 3
+
+    def test_alert_contains_expected_keys(self):
+        alerts = _detect_syn_flood([syn_flood_record()], DEFAULT_CONFIG)
+        assert "rule" in alerts[0]
+        assert "service" in alerts[0]
+        assert "protocol" in alerts[0]
+        assert "detail" in alerts[0]
+
+    def test_custom_threshold(self):
+        config = {**DEFAULT_CONFIG, "syn_flood": {**DEFAULT_CONFIG["syn_flood"], "min_count": 200}}
+        records = [syn_flood_record(count=150)]  # below custom threshold
+        alerts = _detect_syn_flood(records, config)
+        assert len(alerts) == 0
